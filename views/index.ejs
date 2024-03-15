@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<style>
+    body {
+        background-color: rgb(227, 231, 235);
+    }
+
+    .bordered {
+        border: 1px solid red;
+    }
+</style>
+
+<body>
+
+    <!-- start navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container ">
+            <a href="/" class="me-4">
+                <img src="../images/logo.png" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+                <div class="d-flex justify-content-between" style="width: 100%;">
+                    <div class="navbar-nav">
+                        <a class="nav-link active me-2" aria-current="page" href="/" style="font-weight: 600;">Home</a>
+                        <a class="nav-link" href="/addproject">Add Project</a>
+                    </div>
+                    <div>
+                        <% if (isLogin) { %>
+
+                            <a href="/#" style="text-decoration: none; color: rgb(17,23,39);" class="me-4">Hello, <%= user %></a>
+                            <a href="/logout" style="text-decoration: none; color: rgb(17,23,39)" class="me-4">Logout</a>
+                            
+                            <% } else { %>
+                                
+                                <a href="/register" style="text-decoration: none; color: rgb(17,23,39);" class="me-4">Register</a>
+                                <a href="/login" style="text-decoration: none; color: rgb(17,23,39)" class="me-4">Login</a>
+
+                        <% } %>
+                            <a href="/contactme">
+                            <button class="btn btn-primary">Contact Me</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- end navbar -->
+
+    <!-- my profile -->
+    <div class="container p-5 mt-5 mb-5 d-flex" style="background-color: whitesmoke;">
+        <div class="" style="width: 60%;">
+            <p class="h5">Welcome To My Hut</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto itaque eveniet voluptate dolores
+                voluptatibus, laudantium id ducimus ea veniam dicta suscipit. Voluptatibus optio amet earum velit,
+                ratione
+                hic reprehenderit eligendi vitae sequi, ipsa exercitationem est totam quae cumque perspiciatis placeat
+                dignissimos? Nesciunt mollitia vero, optio cumque velit impedit eius beatae consequatur, harum, nobis
+                nulla
+                numquam? Necessitatibus beatae voluptates iure eveniet placeat provident temporibus consequatur,
+                sapiente
+                eum modi? Commodi quas quia labore excepturi impedit praesentium asperiores?
+            </p>
+            <button class="me-2"
+                style="width: 8rem; height: 2rem; border: 0; background-color: rgb(17,23,39); color: whitesmoke; border-radius: 15px;">Contact</button>
+            <a href="" style="color: rgb(17,23,39); text-decoration: none;">download cv<i style="color: rgb(17,23,39);"
+                    class="ms-2 fa-solid fa-download"></i></a><br>
+            <div class="mt-5">
+                <i class="fa-brands fa-linkedin me-4" style="font-size: 2.3rem;"></i>
+                <i class="fa-brands fa-square-instagram me-4" style="font-size: 2.3rem;"></i>
+                <i class="fa-brands fa-facebook me-4" style="font-size: 2.3rem;"></i>
+                <i class="fa-brands fa-twitter me-4" style="font-size: 2.3rem;"></i>
+            </div>
+        </div>
+
+        <div class="" style="padding-left: 8%;">
+            <div
+                style="background-color: whitesmoke; height: 480px; width: 20rem; box-shadow: 10px 15px 40px darkgray;">
+                <img src="../images/kucing.jpg" class="img-fluid mb-2" alt="..." style="width: 20rem;">
+                <p class="h3 fw-bold" style="padding-left: 20%;">Luqman Fauzy</p>
+                <p style="padding-left: 29%;">Fullstack Developer</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- card my project -->
+    <div class="container-fluid p-5 bg-light">
+        <div class="mb-4">
+            <p class="h2 d-flex justify-content-center fw-bold">MY PROJECT</p>
+        </div>
+
+        <div class="p-2 d-flex justify-content-center flex-wrap">
+
+            <% if (datas.length) { %>
+                <% for( let index = 0; index < datas.length; index++ ) { %>
+
+                    <div class="card m-5" style="width: 18rem; box-shadow: 10px 5px 20px darkgray;">
+                        <a href="/detailpost/<%= datas[index].id %>">
+                            <img src="../images/programmer.jpeg" style="height: 100%; width: 100%;" class="card-img-top"
+                            alt="...">
+                        </a>
+
+                        <div class="card-body">
+                            <h6 class="card-title fw-bold" style="margin-bottom: -2px;">
+                                <%= datas[index].name %>
+                            </h6>
+                            <small class="text-secondary">Durasi : <%= datas[index].getDuration %> </small>
+                            <p class="card-text mt-2 mb-2" style="font-size: 0.8rem;">
+                                <%= datas[index].description %>
+                            </p>
+                            <p class="mb-1">Tech Stack : </p>
+                            <div class="mb-4">
+                                <% datas[index].technologies.forEach(element=> { %>
+                                    <%- element %>
+                                        <% }) %>
+                            </div>
+                            <div class=" d-flex justify-content-between">
+                                <div style=" width: 48%;">
+                                    <a href="/editblogget/<%= datas[index].id %>" style="width: 200%; display: inline-block;">
+                                        <button style="background-color: rgb(17,23,39); border: none; color: whitesmoke; width: 48%; border-radius: 5px; height: 30px;">edit</button>
+                                    </a>
+                                </div>
+                                
+                                <div style="border: none; width: 48%;">
+                                    <a href="/deletepost/<%= datas[index].id %>" style="width: 100%; display: inline-block;">
+                                        <button style="border: none; background-color: rgb(17,23,39); width: 100%; color: whitesmoke; height: 30px; border-radius: 5px;">delete</button>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+                        <% } %>
+
+
+
+        </div>
+    </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

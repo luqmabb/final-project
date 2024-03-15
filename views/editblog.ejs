@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update data</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header"><h2 class="text-center">Update Blog Post</h2></div>
+          <div class="card-body">
+
+            <form id="myForm" action="/editblogpost/<%= id %>" method="post">
+              <div class="form-group">
+                <label for="projectName">Project Name:</label>
+                <input type="text" class="form-control" id="projectName" name="nameProject" value="<%= projectData.name %>" >
+              </div>
+              <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date" class="form-control" id="startDate" name="startDate" value="<%= projectData.start_date %>">
+              </div>
+              <div class="form-group">
+                <label for="endDate">End Date:</label>
+                <input type="date" class="form-control" id="endDate" name="endDate" value="<%= projectData.end_date %>">
+              </div>
+              <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" name="description" rows="3" style="resize: none;"> <%= projectData.description %> </textarea>
+              </div>
+              <div class="form-group">
+                <label for="technologies">Technologies:</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="node" id="tech" name="node" <%= techcheckbox.node ? 'checked' : '' %>>
+                  <label class="form-check-label" >
+                    Node JS
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="vue" id="tech" name="vue" <%= techcheckbox.vue ? 'checked' : '' %>>
+                  <label class="form-check-label" >
+                    Vue JS
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="react" id="tech" name="react" <%= techcheckbox.react ? 'checked' : '' %>>
+                  <label class="form-check-label" >
+                    React JS
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="php" id="tech" name="php" <%= techcheckbox.php ? 'checked' : '' %>>
+                  <label class="form-check-label" >
+                    PHP
+                  </label>
+                </div>
+              </div>
+              <div>
+                <label class="mb-2" for="">Upload Image</label>
+                <div class="input-group mb-5">
+                  <input type="file" class="form-control" id="inputGroupFile01">
+                  <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                </div>
+              </div>
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/edit.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
